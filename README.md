@@ -6,7 +6,7 @@ With a threshold of `Pr(x|θ) > 0.7`, the test set produced 92% accuracy. The re
 
 ...
 
-###Dependencies
+### Dependencies
 ```
 pandas      0.22.0
 numpy       1.14.3
