@@ -4,7 +4,9 @@ Python application that detects parts of an image that contain skin. It uses the
 ## Results
 With a threshold of `Pr(x = 1|θ) > 0.7`, the test set produced 92% accuracy. The results of the classifier on random images are shown below:
 
+![test](https://raw.githubusercontent.com/jimiolaniyan/SkinDetector/master/images/original/test.jpeg)
 
+![mask](https://raw.githubusercontent.com/jimiolaniyan/SkinDetector/master/images/mask/mask.jpg)
 
 ### Dependencies
 
