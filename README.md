@@ -6,11 +6,9 @@ With a threshold of `Pr(x = 1|θ) > 0.7`, the test set produced 92% accuracy. Th
 
 
 
-###Dependencies
-```
-pandas      0.22.0
-numpy       1.14.3
-scip        1.1.0
-opencv3     3.2.0
-```
- 
+### Dependencies
+
+> * pandas      0.22.0
+> * numpy       1.14.3
+> * scipy       1.1.0
+> * opencv3     3.2.0
