@@ -9,7 +9,7 @@ With a threshold of `Pr(x = 1|θ) > 0.7`, the test set produced 92% accuracy. Th
 
 
 ## Observations
-1. It is clear that the generative classifier approach is able to separate skin pixels in certain regions with a good level of confidence. However, it also suffers from creating false positives, as it is evident in the first image where the it classifies the shirt of the individuals at the extremes of the photo as skin pixels.
+1. It is clear that the generative classifier is able to separate skin pixels in certain regions with a good level of confidence. However, it also suffers from creating false positives, as it is evident in the first image where the it classifies the shirt of the individuals at the extremes of the photo as skin pixels.
 2. Another observation that is worth mentioning is that the classifier does not classify dark skin regions with high confidence. This can be observed in first image (face of man at extreme left) and the last image (hand at top left). Although the classifier is not perfect, it is possible that there is some bias in the training data set towards lighter skin pixels. i.e. dark skin pixels are not well represented in the UCI Skin Segmentation data set.     
 
 ### Dependencies
