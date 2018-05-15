@@ -1,8 +1,6 @@
-import matplotlib
 import pandas as pd
 from skin_detector import classifier
 import numpy as np
-
 
 class SkinDetector:
 
@@ -20,34 +18,25 @@ class SkinDetector:
         self._dataset = dataset.iloc[:, :].values
 
         # split the data set
-        split = int(0.75 * len(self._dataset))
+        split = int(0.8 * len(self._dataset))
 
         # get the training set
-        self._training_set, test = self._dataset[1:split, :], self._dataset[split:, :]
-        self._test_set = test[:, :-1]
-        self._test_set_labels = test[:, [-1]]
+        training_set, test = self._dataset[1:split, :], self._dataset[split:, :]
+        self._x_train = training_set[:, :-1]
+        self._y_train = training_set[:, [-1]]
+        self._x_test = test[:, :-1]
+        self._y_test = test[:, [-1]]
 
-        self.prob, self.labels = self.train(self._training_set, self._test_set, self._test_set_labels, 2)
+        # Assign the classes (there are only two classes, either skin or non-skin)
+        self.classes = 2
 
-    def train(self, training_set, test, labels, K):
+    def train(self):
         """Takes some skin/no skin training examples and returns the params"""
-        probs = classifier.gen_classifier(training_set, test,  K)
-        return probs, labels
+        return classifier.train_classifier(self._x_train, self._y_train,  self.classes)
 
-
-skindetector = SkinDetector("./data/Skin_NonSkin.txt")
-for i in range(len(skindetector.prob)):
-    if skindetector.prob[i][0] > 0.6:
-        skindetector.prob[i][0] = 1
-    else:
-        skindetector.prob[i][0] = 0
-
-counter = 0
-for i in range(len(skindetector.prob)):
-    if skindetector.prob[i][0] == 1 and skindetector.labels[i][0] == 0:
-        counter += 1
-    elif skindetector.prob[i][0] == 0 and skindetector.labels[i][0] == 1:
-        counter += 1
-
-accuracy = (1 - (counter/len(skindetector.prob))) * 100
-print(round(accuracy, 3))
+    def test(self, prior, mu, covariance, x_test="default"):
+        if x_test == "default":
+            x_test = self._x_test
+            return classifier.test_classifier(prior, mu, covariance, x_test, self.classes), self._y_test
+        else:
+            return classifier.test_classifier(prior, mu, covariance, x_test, self.classes)

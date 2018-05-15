@@ -2,9 +2,9 @@
 Python application that detects parts of an image that contain skin. It uses the [UCI Skin Segmentation](https://archive.ics.uci.edu/ml/datasets/skin+segmentation) data set to train a basic generative classifier which decides whether a pixel is skin or non-skin.
 
 ## Results
-With a threshold of `Pr(x|θ) > 0.7`, the test set produced 92% accuracy. The results of the classifier on random images are shown below:
+With a threshold of `Pr(x = 1|θ) > 0.7`, the test set produced 92% accuracy. The results of the classifier on random images are shown below:
 
-...
+
 
 ###Dependencies
 ```
